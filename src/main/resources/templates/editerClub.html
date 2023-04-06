@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="template">
+<link rel="stylesheet" type="text/css"
+      href="webjars/bootstrap/5.1.3/css/bootstrap.min.css" />
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="register-photo">
+    <div class="form-container">
+        <form action="updateClub" method="post">
+            <h2 class="text-center">Formulaire de Modifier les Clubs</h2>
+            <label class="form-label">Nom :</label>
+            <div class="form-floating mb-3">
+                <input type="Text" class="form-control" name="nomClub" th:value="${club.nomClub}">
+            </div>
+            <label class="form-label">Objective :</label>
+            <div class="form-floating mb-3">
+                <input type="Text" class="form-control" name="ObjectClub" th:value="${club.ObjectClub}">
+            </div>
+            <label  class="form-label">Prix :</label>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" name="prixClub" th:value="${club.prixClub}">
+            </div>
+            <label  class="form-label">Date du création :</label>
+
+            <fmt :formatDate pattern="yyyy-MM-dd" th:value="${club.dateCreation}" var="formatDate" />
+            <div class="form-floating mb-3">
+                <input type="date" name="date" class="form-control" th:value="${formatDate}">
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Modifier</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
