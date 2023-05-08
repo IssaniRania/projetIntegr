@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="template">
+<link rel="stylesheet" type="text/css"
+      href="webjars/bootstrap/5.1.3/css/bootstrap.min.css" />
+<head>
+  <meta charset="utf-8">
+  <title>Ajout Certif</title>
+  <link rel="stylesheet" th:href="@{/css/ClubStyle.css}"/>
+  <link rel="stylesheet" th:href="@{/css/style.min.css}"/>
+  <script th:src="@{/js/createClub.js}"></script>
+</head>
+<body>
+<div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+     data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+  <div layout:replace="Navbar :: header"></div>
+  <div layout:replace="Navbar :: asid"></div>
+  <div class="register-photo">
+    <div class="form-container">
+      <form th:action="@{/saveCertif(id=${club != null ? club.idClub : null})}" method="POST" enctype="multipart/form-data">
+        <h2 class="text-center">Formulaire de l'ajout des Certifications</h2>
+          <input type="hidden" th:name="idClub" th:value="${club != null ? club.idClub : null}" />
+        <label class="form-label">Nom :</label>
+        <div class="form-floating mb-3">
+          <input type="Text" class="form-control" name="nomCertif" id="nom" placeholder="Nom du Club">
+        </div>
+        <label class="form-label">Objective :</label>
+        <div class="form-floating mb-3">
+          <input type="Text" class="form-control" name="ObjectCertif" id="object" placeholder="objective du Club">
+        </div>
+        <label class="form-label">Prix :</label>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" name="prixCertif" placeholder="prix du Club" id="prix">
+        </div>
+        <label  class="form-label">Date du création :</label>
+        <div class="form-floating mb-3">
+          <input type="date" name="dateCreation" class="form-control">
+        </div>
+        <div class="form-floating mb-3">
+          <input type="file" name="image" class="form-control"/>
+        </div>
+        <div>
+          <button type="submit" onclick="validateForm()" class="btn btn-primary">Ajouter</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>
