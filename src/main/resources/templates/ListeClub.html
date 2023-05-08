@@ -11,7 +11,6 @@
     <link rel="stylesheet" th:href="@{/css/ClubListe.css}"/>
 </head>
 <body>
-<div layout:replace="Navbar :: header"></div>
 <div>
     <div class="container">
         <div class="card">
@@ -29,6 +28,7 @@
                     </thead>
                     <tbody>
                     <tr th:each="c:${clubs.content}">
+                        <td class="espace_td" ><img th:src="@{/image/{filename}(filename=${c.imagePath})}"></td>
                         <td class="espace_td" th:text="${c.nomClub}"></td>
                         <td class="espace_td" th:text="${c.prixClub}"></td>
                         <td class="espace_td"><a class="btn btn-danger" onclick="return confirm('Etes-vous sûr ?')"

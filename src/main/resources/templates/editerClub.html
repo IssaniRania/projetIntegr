@@ -11,7 +11,8 @@
 <body>
 <div class="register-photo">
     <div class="form-container">
-        <form action="updateClub" method="post">
+        <form th:action="@{/updateClub(id=${club.idClub})}" method="post">
+            <input type="hidden" th:name="idClub" th:value="${club.idClub}">
             <h2 class="text-center">Formulaire de Modifier les Clubs</h2>
             <label class="form-label">Nom :</label>
             <div class="form-floating mb-3">
@@ -26,10 +27,8 @@
                 <input type="text" class="form-control" name="prixClub" th:value="${club.prixClub}">
             </div>
             <label  class="form-label">Date du création :</label>
-
-            <fmt :formatDate pattern="yyyy-MM-dd" th:value="${club.dateCreation}" var="formatDate" />
             <div class="form-floating mb-3">
-                <input type="date" name="date" class="form-control" th:value="${formatDate}">
+                <input type="date" name="date" class="form-control" th:value="${club.dateCreation}">
             </div>
             <div>
                 <button type="submit" class="btn btn-primary">Modifier</button>

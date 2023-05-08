@@ -14,4 +14,8 @@ public interface ClubService {
     Club getClub(Long id);
     List<Club>getAllClub();
     Page<Club> getAllClubsParPage(int page, int size);
+
+    Club getClubById(Long id);
+    Club findById(Long Id);
+
 }
