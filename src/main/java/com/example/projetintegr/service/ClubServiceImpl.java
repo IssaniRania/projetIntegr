@@ -8,6 +8,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClubServiceImpl implements ClubService{
@@ -44,4 +45,12 @@ public class ClubServiceImpl implements ClubService{
         // TODO Auto-generated method stub
         return clubRepository.findAll(PageRequest.of(page, size));
     }
+    @Override
+    public Club getClubById(Long id) {
+        Optional<Club> club = clubRepository.findById(id);//option est une class pour tester club vide ou non
+        return club.orElse(null);//orElse qui test null ou non
+    }
+    @Override
+    public Club findById(Long clubId) {
+       return clubRepository.findById(clubId).orElse(null) ;   }
 }
