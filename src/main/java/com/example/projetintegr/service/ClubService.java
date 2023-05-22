@@ -1,5 +1,6 @@
 package com.example.projetintegr.service;
 
+import com.example.projetintegr.entities.Certif;
 import com.example.projetintegr.entities.Club;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
@@ -17,5 +18,7 @@ public interface ClubService {
 
     Club getClubById(Long id);
     Club findById(Long Id);
+    List<Club> findByNomClub(String nom);
+
 
 }

@@ -1,6 +1,7 @@
 package com.example.projetintegr.service;
 
 import com.example.projetintegr.dao.ClubRepository;
+import com.example.projetintegr.entities.Certif;
 import com.example.projetintegr.entities.Club;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -53,4 +54,10 @@ public class ClubServiceImpl implements ClubService{
     @Override
     public Club findById(Long clubId) {
        return clubRepository.findById(clubId).orElse(null) ;   }
+
+    @Override
+    public List<Club> findByNomClub(String nom) {
+
+        return clubRepository.findByNomClub(nom);
+    }
 }

@@ -3,6 +3,7 @@ package com.example.projetintegr.entities;
 import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.sql.Blob;
 import java.util.Date;
 import java.util.List;
 
@@ -11,6 +12,7 @@ public class Club {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idClub;
+    private String name;
     @NotNull
     @Size(min = 2,max = 30)
     private String nomClub;
@@ -31,6 +33,11 @@ public class Club {
     private Users users;
     @OneToMany(mappedBy = "club")
     private List<Certif> certifs;
+    @OneToMany(mappedBy = "club")
+    private List<Formation> formations;
+    @OneToMany(mappedBy = "club")
+    private List<Certif> evenements;
+
     public Club(String nomClub, double prixClub, Date dateCreation, String objectClub,String imagePath) {
         this.nomClub = nomClub;
         this.prixClub = prixClub;
@@ -47,6 +54,55 @@ public class Club {
         this.imagePath = imagePath;
         this.users = users;
         this.certifs = certifs;
+    }
+
+    public Club(List<Formation> formations) {
+        this.formations = formations;
+    }
+
+    public List<Formation> getFormations() {
+        return formations;
+    }
+
+    public void setFormations(List<Formation> formations) {
+        this.formations = formations;
+    }
+
+    public Club(String name, String nomClub, double prixClub, Date dateCreation, String objectClub, String imagePath, Users users, List<Certif> certifs, List<Formation> formations, List<Certif> evenements) {
+        this.name = name;
+        this.nomClub = nomClub;
+        this.prixClub = prixClub;
+        this.dateCreation = dateCreation;
+        ObjectClub = objectClub;
+        this.imagePath = imagePath;
+        this.users = users;
+        this.certifs = certifs;
+        this.formations = formations;
+        this.evenements = evenements;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Users getUsers() {
+        return users;
+    }
+
+    public void setUsers(Users users) {
+        this.users = users;
+    }
+
+    public List<Certif> getEvenements() {
+        return evenements;
+    }
+
+    public void setEvenements(List<Certif> evenements) {
+        this.evenements = evenements;
     }
 
     public Club() {

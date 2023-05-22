@@ -19,9 +19,9 @@
   <div class="col-md-12 col-lg-12 col-sm-12">
     <div class="white-box">
       <div class="d-md-flex mb-3">
-        <h3 class="box-title mb-0">Recent sales</h3>
+        <h3 class="box-title mb-0">Liste des clubs</h3>
         <div class="col-md-3 col-sm-4 col-xs-6 ms-auto">
-          <a class="btn btn-primary" th:href="@{/certification(id=${id ?: null})}">ADD</a>
+          <a  class="btn btn-outline-info" th:href="@{/showCreate}">create club<i class="bi bi-plus" ></i></a>
         </div>
       </div>
       <div class="table-responsive">
@@ -30,9 +30,9 @@
           <tr>
             <th class="border-top-0">#</th>
             <th class="border-top-0">Name_Club</th>
-            <th class="border-top-0">Certification</th>
+            <th class="border-top-0">Evenement</th>
             <th class="border-top-0">Formation</th>
-            <th class="border-top-0">Comptétion</th>
+            <th class="border-top-0">Certification</th>
             <th class="border-top-0"></th>
           </tr>
           </thead>
@@ -40,13 +40,13 @@
           <tr th:each="club : ${clubs}">
             <td th:text="${club.idClub}"></td>
             <td class="txt-oflo" th:text="${club.nomClub}"></td>
-            <td><a class="btn btn-primary" th:href="@{/certification(id=${club.idClub})}">ADD</a></td>
-            <td>+add</td>
-            <td>+add</td>
-            <td><a class="btn btn-danger" onclick="return confirm('Etes-vous sûr ?')"
+            <td><a class="btn btn-outline-info" th:href="@{/evenement(id=${club.idClub})}"><i class="bi bi-plus-circle" ></i></a></td>
+            <td><a class="btn btn-outline-info" th:href="@{/formation(id=${club.idClub})}"><i class="bi bi-plus-circle" ></i></a></td>
+            <td><a class=" btn btn-outline-info" th:href="@{/certification(id=${club.idClub})}"><i class="bi bi-plus-circle" ></i></a></td>
+            <td><a class="btn btn btn-outline-danger" onclick="return confirm('Etes-vous sûr ?')"
                    th:href="@{supprimerClub(id=${club.idClub},
 page=${currentPage},size=${size})}"><i class="bi bi-trash-fill"></i></a>
-              <a class="btn btn-warning" th:href="@{modifierClub(id=${club.idClub},page=${currentPage},size=${size})}"><i class="bi bi-pencil-square"></i></a>
+              <a class="btn  btn-outline-danger" th:href="@{modifierClub(id=${club.idClub},page=${currentPage},size=${size})}"><i class="bi bi-pencil-square"></i></a>
             </td>
           </tr>
           </tbody>

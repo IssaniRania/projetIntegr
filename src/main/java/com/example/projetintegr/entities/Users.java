@@ -7,6 +7,7 @@ public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUser;
+    @Column(name = "username")
     private String NomUser;
     private String Email;
     private String Password;
