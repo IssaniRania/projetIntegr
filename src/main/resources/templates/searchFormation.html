@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="template">
+<head>
+  <meta charset="utf-8" />
+  <meta charset="utf-8">
+
+  <!-- Additional CSS Files -->
+  <link rel="stylesheet" th:href="@{/css/fontawesome.css}">
+  <link rel="stylesheet" th:href="@{/css/templatemo-edu-meeting.css}">
+  <link rel="stylesheet" th:href="@{/css/owl.css}">
+  <link rel="stylesheet" th:href="@{/css/lightbox.css}">
+  <link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/css}">
+
+</head>
+<body>
+<section class="upcoming-meetings" id="meetings">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="section-heading">
+          <h2>Résultats de la recherche pour "<span th:text="${searchTermF}"></span>"</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6" th:each="certif : ${formations}">
+          <div class="meeting-item">
+            <div class="thumb">
+              <div class="price">
+                <span th:text="${certif.prixFormation}"></span>
+              </div>
+              <a href="meeting-details.html">
+                <img th:src="@{/formations/{id}/image(id=${certif.idFormation})}" alt="New Lecturer Meeting">
+              </a>
+            </div>
+            <div class="down-content">
+              <div class="date">
+                <h6 th:text="${#dates.format(certif.dateFormation, 'MMM dd')}"></h6>
+              </div>
+              <a href="meeting-details.html">
+                <h4 th:text="${certif.nomFormation}"></h4>
+              </a> <h2 style="text-decoration-color: red">description:</h2> <br>
+              <p th:text="${certif.objectFormation}"></p>
+              <a th:href="@{/userformation(id=${certif.idFormation})}"id="form-submit" class="button"> SEND MESSAGE NOW</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

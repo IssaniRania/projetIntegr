@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="template">
+<link rel="stylesheet" type="text/css"
+      href="webjars/bootstrap/5.1.3/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/css/style.min.css}"/>
+  <link rel="stylesheet" th:href="@{/css/ClubListe.css}"/>
+</head>
+<body>
+<div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+     data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+  <div layout:replace="Navbar :: header"></div>
+  <div layout:replace="Navbar :: asid"></div>
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-sm-12">
+      <div class="white-box">
+        <div class="d-md-flex mb-3">
+          <h3 class="box-title mb-0">Liste des formations</h3>
+
+
+          <div class="col-md-3 col-sm-4 col-xs-6 ms-auto">
+            <a  class="btn btn-outline-info" th:href="@{/formation}">create formation<i class="bi bi-plus" ></i></a>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table no-wrap">
+            <thead>
+            <tr>
+              <th class="border-top-0">id</th>
+              <th class="border-top-0">Name Formation</th>
+              <th class="border-top-0">Date creation</th>
+              <th class="border-top-0">prix</th>
+              <th class="border-top-0"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="f:${formations}">
+              <td th:text="${f.idFormation}"></td>
+              <td   th:text="${f.nomFormation}"></td>
+              <td th:text="${f.prixFormation}"></td>
+              <td><a class="btn btn btn-outline-danger" onclick="return confirm('Etes-vous sûr ?')" th:href="@{supprimerFormation(id=${f.idFormation},
+page=${currentPage},size=${size})}"><i class="bi bi-trash-fill"></i></a>
+                <a class="btn  btn-outline-danger"th:href="@{modifierFormation(id=${f.idFormation},page=${currentPage},size=${size})}"><i class="bi bi-pencil-square"></i></a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</body>
+</html>

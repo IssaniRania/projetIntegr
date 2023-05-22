@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="template">
+<head>
+  <meta charset="utf-8" />
+  <meta charset="utf-8">
+
+  <!-- Additional CSS Files -->
+  <link rel="stylesheet" th:href="@{/css/fontawesome.css}">
+  <link rel="stylesheet" th:href="@{/css/templatemo-edu-meeting.css}">
+  <link rel="stylesheet" th:href="@{/css/owl.css}">
+  <link rel="stylesheet" th:href="@{/css/lightbox.css}">
+  <link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/css}">
+
+</head>
+
+<body>
+<!-- ***** Header Area Start ***** -->
+<header class="header-area header-sticky">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <nav class="main-nav">
+          <!-- ***** Logo Start ***** -->
+          <a href="index.html" class="logo">
+            Edu Meeting
+          </a>
+          <!-- ***** Logo End ***** -->
+          <!-- ***** Menu Start ***** -->
+          <ul class="nav">
+            <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+            <li><a href="meetings.html">Meetings</a></li>
+            <li class="scroll-to-section"><a href="#apply">Apply Now</a></li>
+            <li class="has-sub">
+              <a href="javascript:void(0)">Pages</a>
+              <ul class="sub-menu">
+                <li><a href="meetings.html">Upcoming Meetings</a></li>
+                <li><a href="meeting-details.html">Meeting Details</a></li>
+              </ul>
+            </li>
+            <li class="scroll-to-section"><a href="#courses">Courses</a></li>
+            <li class="scroll-to-section"><a href="#contact">Contact Us</a></li>
+          </ul>
+          <a class='menu-trigger'>
+            <span>Menu</span>
+          </a>
+          <!-- ***** Menu End ***** -->
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- ***** Header Area End ***** -->
+
+<!-- ***** Main Banner Area Start ***** -->
+<section class="section main-banner" id="top" data-section="section1">
+  <video autoplay muted loop id="bg-video">
+    <source th:src="@{/image/course-video.mp4}" type="video/mp4" />
+  </video>
+
+  <div class="video-overlay header-text">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="caption">
+            <h6>Hello Students</h6>
+            <h2>Welcome to Education</h2>
+            <p>This is an edu meeting HTML CSS template provided by <a rel="nofollow" href="https://templatemo.com/page/1" target="_blank">TemplateMo website</a>. This is a Bootstrap v5.1.3 layout. The video background is taken from Pexels website, a group of young people by <a rel="nofollow" href="https://www.pexels.com/@pressmaster" target="_blank">Pressmaster</a>.</p>
+            <div class="main-button-red">
+              <div class="scroll-to-section"><a href="#contact">Join Us Now!</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ***** Main Banner Area End *****-->
+<section class="upcoming-meetings" id="meetings">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+          <div class="section-heading">
+            <h2>Résultats de la recherche pour "<span th:text="${searchTermCL}"></span>"</h2>
+          </div>
+
+      <div class="row">
+        <div class="col-lg-6" th:each=" c : ${clubs}">
+          <div class="meeting-item">
+            <div class="thumb">
+              <div class="price">
+                <span th:text="${c.idClub}"></span>
+              </div>
+              <a href="meeting-details.html">
+                <img th:src="@{/clubs/{id}/image(id=${c.idClub})}" alt="New Lecturer Meeting">
+              </a>
+            </div>
+            <div class="down-content">
+              <div class="date">
+                <h6 th:text="${#dates.format(c.dateCreation, 'MMM dd')}"></h6>
+              </div>
+              <a href="meeting-details.html">
+                <h4 th:text="${c.nomClub}"></h4>
+              </a> <h2 style="text-decoration-color: red">description:</h2> <br>
+              <p th:text="${c.objectClub}"></p>
+              <a th:href="@{/userclub(id=${c.idClub})}"id="form-submit" class="button"> SEND MESSAGE NOW</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
