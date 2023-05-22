@@ -16,7 +16,4 @@ public interface CertifService {
 
     Certif getCertifById(Long id);
 
-    List<Certif> findByNomCertif(String nom);
-
-
 }
